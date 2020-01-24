@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Random dog image</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<style>
+  * { text-align: center }
+  </style>
+  </head>
+  <body>
+    <div id="container">
+      <h1 id="dogname"></h1>
+      </div>
+  </body>
+  <script type="text/javascript">
+
+
+    var img = document.createElement("img");
+
+    axios.get("https://dog.ceo/api/breeds/image/random")
+    .then((response)=>{
+      console.log(response.data.message);
+      img.src = response.data.message;
+      var n = response.data.message.lastIndexOf("/");
+      var res =response.data.message.slice(30, n);
+      document.getElementById("dogname").innerHTML = res;
+      var container = document.getElementById("container");
+      container.appendChild(img);
+    })
+
+
+
+
+
+    </script>
+
+
+
+
+</html>
